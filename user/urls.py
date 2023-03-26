@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
 from .views import CustomUserRegister, UserLogin, UserProfileView, ChangePasswordView
 
 urlpatterns = [
-    path('current', UserProfileView.as_view()),
+    path('current/', UserProfileView.as_view()),
     path('register/', CustomUserRegister.as_view(), name='user-register'),
     path('login/', UserLogin.as_view(), name='user-login'),
     path('logout/', UserLogin.as_view(), name='user-logout'),
