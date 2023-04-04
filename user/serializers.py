@@ -16,13 +16,12 @@ class CustomUserSerializer(serializers.ModelSerializer):
         super().__init__(*args, **kwargs)
         is_vendor = self.context['request'].data.get('is_vendor', None)
         if not is_vendor:
-            # If user is not a vendor, or it's a new user, only require these fields
-            self.fields['username'].required = True
+            # If user is not a vendor, only require these fields
             self.fields['email'].required = True
             self.fields['password'].required = True
             self.fields['first_name'].required = True
-            self.fields['last_name'].required = True
             # Set other fields to not required
+            self.fields['last_name'].required = False
             self.fields['shop_name'].required = False
             self.fields['shop_url'].required = False
             self.fields['company_name'].required = False
